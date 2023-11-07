@@ -43,18 +43,18 @@ public class ControleurContinator extends Controleur{
 	}
 
 	protected List<Commande> historique = new ArrayList<Commande>();
-	protected DRAPEAU drapeauChoisi = DRAPEAU.Allemagne;
+	protected DRAPEAU continentChoisi = DRAPEAU.Allemagne;
 	
-	public void notifierChoixDrapeau(Continent.DRAPEAU nouveauDrapeau)  
+	public void notifierChoixContinent(Continent.DRAPEAU nouveauContinent)  
 	 {
-		System.out.println("ControleurContinator.notifierChoixDrapeau()");
+		System.out.println("ControleurContinator.notifierChoixContinent()");
 		//VueContinator.getInstance().afficherPays(drapeau);
-		this.continent.setDrapeau(nouveauDrapeau);
-		Commande commande = new CommandeChoisirPays(drapeauChoisi, nouveauDrapeau);
+		this.continent.setContinent(nouveauContinent);
+		Commande commande = new CommandeChoisirContinent(continentChoisi, nouveauContinent);
 		commande.executer();
-		commande.annuler();
+		//commande.annuler();
 		historique.add(commande);
-		this.drapeauChoisi = nouveauDrapeau;
+		this.continentChoisi = nouveauContinent;
 		
 		
 	}

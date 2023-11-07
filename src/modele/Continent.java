@@ -18,7 +18,7 @@ public class Continent implements Exportable{
 		return drapeau;
 	}
 
-	public void setDrapeau(DRAPEAU drapeau) {
+	public void setContinent(DRAPEAU drapeau) {
 		this.drapeau = drapeau;
 	}
 	public Continent() {

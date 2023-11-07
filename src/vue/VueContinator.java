@@ -103,11 +103,21 @@ public class VueContinator extends Vue {
 		
 		
 		
-		Button actionChoisirContinentAfriqueOuest= (Button)lookup("#action-choix-continent-afrique-ouest");
-	    Button actionChoisirContinentAfriqueEst = (Button)lookup("#action-choix-continent-afrique-est");
-		Button actionChoisirContinentAfriqueSud = (Button)lookup("#action-choix-continent-afrique-sud");
-		Button actionChoisirContinentAfriqueNord = (Button)lookup("#action-choix-continent-afrique-nord");
+		Button actionChoisirContinentMali= (Button)lookup("#action-choix-continent-mali");
+	    Button actionChoisirContinentCanada = (Button)lookup("#action-choix-continent-canada");
+		Button actionChoisirContinentChine = (Button)lookup("#action-choix-continent-chine");
+		Button actionChoisirContinentAllemagne = (Button)lookup("#action-choix-continent-chine");
 		Button actionSauvegarder = (Button)lookup("#action-sauvegarder");
+		Button actionRedo = (Button)lookup("#action-redo");
+		
+		actionRedo.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				System.out.println("Action redo");
+				controleur.notifierChoixContinent(null);
+				
+			}});
 		
 		actionSauvegarder.setOnAction(new EventHandler<ActionEvent>(){
 
@@ -120,43 +130,43 @@ public class VueContinator extends Vue {
 
 		
 
-		actionChoisirContinentAfriqueOuest.setOnAction(new EventHandler<ActionEvent>() {
+		actionChoisirContinentMali.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("choisir le Continent Afrique de l'ouest");
-				controleur.notifierChoixDrapeau(Continent.DRAPEAU.Mali);
+				System.out.println("choisir la carte Mali");
+				controleur.notifierChoixContinent(Continent.DRAPEAU.Mali);
 				
 			}});
 		
 		
 		
-		actionChoisirContinentAfriqueEst.setOnAction(new EventHandler<ActionEvent>() {
+		actionChoisirContinentCanada.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("choisir le Continent Afrique de l'est");
-				controleur.notifierChoixDrapeau(Continent.DRAPEAU.Canada);
+				System.out.println("choisir choisir la carte Canada");
+				controleur.notifierChoixContinent(Continent.DRAPEAU.Canada);
 				
 			}});
 
 		
-		 actionChoisirContinentAfriqueSud.setOnAction(new EventHandler<ActionEvent>() {
+		 actionChoisirContinentChine.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("choisir le Continent Afrique du Sud ");
-				controleur.notifierChoixDrapeau(Continent.DRAPEAU.Chine);
+				System.out.println("choisir choisir la carte Chine ");
+				controleur.notifierChoixContinent(Continent.DRAPEAU.Chine);
 				
 				
 			}});
 		 
-		 actionChoisirContinentAfriqueNord.setOnAction(new EventHandler<ActionEvent>(){
+		 actionChoisirContinentAllemagne.setOnAction(new EventHandler<ActionEvent>(){
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("choisir le Continent Afrique du Nord");
-				controleur.notifierChoixDrapeau(Continent.DRAPEAU.Allemagne);
+				System.out.println("choisir la carte Allemagne");
+				controleur.notifierChoixContinent(Continent.DRAPEAU.Allemagne);
 				
 			}});
 	
