@@ -9,6 +9,7 @@ import architecture.Controleur;
 import donnee.Exportable;
 import donnee.Exporteur;
 import modele.Continent;
+import modele.Continent.DRAPEAU;
 import modele.Pays;
 import modele.Pays.PAYS;
 import vue.VueContinator;
@@ -18,7 +19,7 @@ public class ControleurContinator extends Controleur{
 
 	private Pays.PAYS paysChoisi;
 
-	//private List<Exportable> paysContinent = null;
+	
 	
 	private Continent continent = new Continent(); 
 	
@@ -32,6 +33,8 @@ public class ControleurContinator extends Controleur{
 	{
 		
 	}
+	
+	
 
 	public void notifierChoixPays (PAYS pays)
 	{
@@ -39,16 +42,24 @@ public class ControleurContinator extends Controleur{
 		this.paysChoisi = pays;
 	}
 
-	public void notifierChoixDrapeau(Continent.DRAPEAU drapeau)  
+	protected List<Commande> historique = new ArrayList<Commande>();
+	protected DRAPEAU drapeauChoisi = DRAPEAU.Allemagne;
+	
+	public void notifierChoixDrapeau(Continent.DRAPEAU nouveauDrapeau)  
 	 {
 		System.out.println("ControleurContinator.notifierChoixDrapeau()");
-		VueContinator.getInstance().afficherPays(drapeau);
-		this.continent.setDrapeau(drapeau);
+		//VueContinator.getInstance().afficherPays(drapeau);
+		this.continent.setDrapeau(nouveauDrapeau);
+		Commande commande = new CommandeChoisirPays(drapeauChoisi, nouveauDrapeau);
+		commande.executer();
+		commande.annuler();
+		historique.add(commande);
+		this.drapeauChoisi = nouveauDrapeau;
 		
-		//Exporteur exporteur = new Exporteur();
-		//exporteur.sauvegarder(paysContinent);
 		
 	}
+	
+	
 	
 	public void notifierClicContinant(double x, double y)
 	{	
@@ -56,6 +67,8 @@ public class ControleurContinator extends Controleur{
 		VueContinator.getInstance().decouvrirPays(this.paysChoisi, x, y);
 		Pays pays = new Pays(this.paysChoisi, x,y);
 		this.continent.ajouterPays(pays);
+		
+		
 	}
 	
 	public void notifierSauvegarder() 
