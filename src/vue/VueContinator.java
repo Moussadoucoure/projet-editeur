@@ -106,7 +106,7 @@ public class VueContinator extends Vue {
 		Button actionChoisirContinentMali= (Button)lookup("#action-choix-continent-mali");
 	    Button actionChoisirContinentCanada = (Button)lookup("#action-choix-continent-canada");
 		Button actionChoisirContinentChine = (Button)lookup("#action-choix-continent-chine");
-		Button actionChoisirContinentAllemagne = (Button)lookup("#action-choix-continent-chine");
+		Button actionChoisirContinentAllemagne = (Button)lookup("#action-choix-continent-allemagne");
 		Button actionSauvegarder = (Button)lookup("#action-sauvegarder");
 		Button actionRedo = (Button)lookup("#action-redo");
 		
