@@ -36,51 +36,51 @@ public class VueContinator extends Vue {
 		super.activerControles();
 		
 		
-		Button choisirMali = (Button) lookup("#choisir-mali");
-		choisirMali.setOnAction(new EventHandler<ActionEvent>() 
+		Button choisirDrapeauMali = (Button) lookup("#choisir-mali");
+		choisirDrapeauMali.setOnAction(new EventHandler<ActionEvent>() 
 		{
             
 			@Override
 			public void handle(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("Clic choisir Mali");
-				controleur.notifierChoixPays(Pays.PAYS.MALI);
+				controleur.notifierChoixDrapeau(Pays.PAYS.MALI);
 				
 			}});
 		
-		Button choisirCanada = (Button) lookup("#choisir-canada");
-		choisirCanada.setOnAction(new EventHandler<ActionEvent>() 
+		Button choisirDrapeauCanada = (Button) lookup("#choisir-canada");
+		choisirDrapeauCanada.setOnAction(new EventHandler<ActionEvent>() 
 		{
             
 			@Override
 			public void handle(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("Clic choisir Canada");
-				controleur.notifierChoixPays(Pays.PAYS.CANADA);
+				controleur.notifierChoixDrapeau(Pays.PAYS.CANADA);
 				
 			}});
 		
-		Button choisirChine = (Button) lookup("#choisir-chine");
-		choisirChine.setOnAction(new EventHandler<ActionEvent>() 
+		Button choisirDrapeauChine = (Button) lookup("#choisir-chine");
+		choisirDrapeauChine.setOnAction(new EventHandler<ActionEvent>() 
 		{
             
 			@Override
 			public void handle(ActionEvent e) {
 				
 				System.out.println("Clic choisir Chine");
-				controleur.notifierChoixPays(Pays.PAYS.CHINE);
+				controleur.notifierChoixDrapeau(Pays.PAYS.CHINE);
 				
 			}});
 		
-		Button choisirAllemagne = (Button) lookup("#choisir-allemagne");
-		choisirAllemagne.setOnAction(new EventHandler<ActionEvent>() 
+		Button choisirDrapeauAllemagne = (Button) lookup("#choisir-allemagne");
+		choisirDrapeauAllemagne.setOnAction(new EventHandler<ActionEvent>() 
 		{
             
 			@Override
 			public void handle(ActionEvent e) {
 				
 				System.out.println("Clic choisir Allemagne");
-				controleur.notifierChoixPays(Pays.PAYS.ALLEMAGNE);
+				controleur.notifierChoixDrapeau(Pays.PAYS.ALLEMAGNE);
 				
 			}});
 		
@@ -97,7 +97,7 @@ public class VueContinator extends Vue {
 				System.out.println("Clic a ("+x+", "+y+")");
 				
 				
-				controleur.notifierClicContinant(x, y);
+				controleur.notifierClicDrapeauChoisi(x, y);
 				
 			}});
 		
@@ -174,7 +174,7 @@ public class VueContinator extends Vue {
 	}
 	
 	
-	public void afficherPays(DRAPEAU drapeau)
+	public void afficherContinent(DRAPEAU drapeau)
 	{
 		System.out.println("Vuecontinentor.afficherTerrain()");
 		AnchorPane cloture = (AnchorPane)lookup("#continant");

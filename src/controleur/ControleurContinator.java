@@ -36,7 +36,7 @@ public class ControleurContinator extends Controleur{
 	
 	
 
-	public void notifierChoixPays (PAYS pays)
+	public void notifierChoixDrapeau (PAYS pays)
 	{
 		
 		this.paysChoisi = pays;
@@ -59,12 +59,16 @@ public class ControleurContinator extends Controleur{
 		
 	}
 	
+	protected PAYS drapeauChoisi = paysChoisi;
 	
-	
-	public void notifierClicContinant(double x, double y)
+	public void notifierClicDrapeauChoisi(double x, double y)
 	{	
 		System.out.println("ControleurContinator.notifierClicContinant()");
-		VueContinator.getInstance().decouvrirPays(this.paysChoisi, x, y);
+		
+		Commande commande = new CommandeChoisirDrapeau(null, paysChoisi, x, y);
+		commande.executer();
+		historique.add(commande);
+		//VueContinator.getInstance().decouvrirPays(this.paysChoisi, x, y);
 		Pays pays = new Pays(this.paysChoisi, x,y);
 		this.continent.ajouterPays(pays);
 		

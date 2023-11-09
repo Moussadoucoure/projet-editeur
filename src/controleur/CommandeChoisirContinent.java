@@ -11,7 +11,7 @@ public class CommandeChoisirContinent extends Commande{
 	
 	public CommandeChoisirContinent(DRAPEAU ancienContinent, DRAPEAU nouveauContinent) 
 	{
-		this.nouveauContinent = ancienContinent;
+		this.ancienContinent = ancienContinent;
 		this.nouveauContinent = nouveauContinent;
 		
 		
@@ -19,12 +19,12 @@ public class CommandeChoisirContinent extends Commande{
 
 	public void executer() 
 	{
-		VueContinator.getInstance().afficherPays(this.nouveauContinent);
+		VueContinator.getInstance().afficherContinent(this.nouveauContinent);
 	}
 	
 	public void annuler() 
 	{
-		VueContinator.getInstance().afficherPays(this.ancienContinent);
+		//VueContinator.getInstance().afficherPays(this.ancienContinent);
 	}
 
 }
