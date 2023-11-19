@@ -3,9 +3,11 @@ import com.sun.media.jfxmedia.logging.Logger;
 
 import architecture.Vue;
 import controleur.ControleurContinator;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -108,14 +110,15 @@ public class VueContinator extends Vue {
 		Button actionChoisirContinentChine = (Button)lookup("#action-choix-continent-chine");
 		Button actionChoisirContinentAllemagne = (Button)lookup("#action-choix-continent-allemagne");
 		Button actionSauvegarder = (Button)lookup("#action-sauvegarder");
-		Button actionRedo = (Button)lookup("#action-redo");
+		Button actionUndo = (Button)lookup("#action-undo");
 		
-		actionRedo.setOnAction(new EventHandler<ActionEvent>() {
+		actionUndo.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
-				System.out.println("Action redo");
-				controleur.notifierChoixContinent(null);
+				System.out.println("Action undo");
+				
+				controleur.notifierUndo();
 				
 			}});
 		
@@ -232,6 +235,40 @@ public class VueContinator extends Vue {
 		
 		AnchorPane cloture = (AnchorPane) lookup("#continant");
 		cloture.getChildren().add(paysDecouvert);
+		
+		
+		
+		
+	}
+	
+	public void retirerPays(PAYS paysChoisi, double x, double y) 
+	{
+		AnchorPane cloture = (AnchorPane) lookup("#continant");
+		
+		
+		for(Object node: cloture.getChildren().toArray()) 
+		{
+			ImageView image;
+			try {
+				image = (ImageView) node;
+			} catch(ClassCastException e) {
+				continue;
+			}
+			
+			
+			if(image.getX() != x-15) {
+				continue;
+				
+			}
+			if(image.getY() != y - 50) {
+				continue;
+				
+			}
+			if(paysChoisi == PAYS.ALLEMAGNE && image.getImage().getUrl() != new Image("vue/decoration/drapeauAllemagne.png").getUrl()) {
+				continue;
+			};
+			cloture.getChildren().remove(node);
+		}
 		
 	}
 

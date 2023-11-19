@@ -1,19 +1,19 @@
 package controleur;
 
-import modele.Continent.DRAPEAU;
+
 import modele.Pays.PAYS;
 import vue.VueContinator;
 
 public class CommandeChoisirDrapeau extends Commande {
 	
-	protected PAYS ancienDrapeau;
+	
 	protected PAYS nouveauDrapeau;
 	protected double x;
 	protected double y;
 	
-	public CommandeChoisirDrapeau(PAYS ancienDrapeau, PAYS nouveauDrapeau, double x, double y) 
+	public CommandeChoisirDrapeau(PAYS nouveauDrapeau, double x, double y) 
 	{
-		this.ancienDrapeau = ancienDrapeau;
+		
 		this.nouveauDrapeau = nouveauDrapeau;
 		this.x = x;
 		this.y = y;
@@ -28,7 +28,8 @@ public class CommandeChoisirDrapeau extends Commande {
 	
 	public void annuler() 
 	{
-		
+	
+		VueContinator.getInstance().retirerPays(nouveauDrapeau, x, y);
 	}
 
 }

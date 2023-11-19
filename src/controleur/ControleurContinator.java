@@ -2,6 +2,7 @@ package controleur;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import com.sun.media.jfxmedia.logging.Logger;
 
@@ -42,13 +43,13 @@ public class ControleurContinator extends Controleur{
 		this.paysChoisi = pays;
 	}
 
-	protected List<Commande> historique = new ArrayList<Commande>();
+	protected Stack<Commande> historique = new Stack<Commande>();
 	protected DRAPEAU continentChoisi = DRAPEAU.Allemagne;
 	
 	public void notifierChoixContinent(Continent.DRAPEAU nouveauContinent)  
 	 {
 		System.out.println("ControleurContinator.notifierChoixContinent()");
-		//VueContinator.getInstance().afficherPays(drapeau);
+		
 		this.continent.setContinent(nouveauContinent);
 		Commande commande = new CommandeChoisirContinent(continentChoisi, nouveauContinent);
 		commande.executer();
@@ -65,7 +66,7 @@ public class ControleurContinator extends Controleur{
 	{	
 		System.out.println("ControleurContinator.notifierClicContinant()");
 		
-		Commande commande = new CommandeChoisirDrapeau(null, paysChoisi, x, y);
+		Commande commande = new CommandeChoisirDrapeau(paysChoisi, x, y);
 		commande.executer();
 		historique.add(commande);
 		//VueContinator.getInstance().decouvrirPays(this.paysChoisi, x, y);
@@ -81,5 +82,10 @@ public class ControleurContinator extends Controleur{
 		Exporteur exporteur = new Exporteur();
 		//exporteur.sauvegarder(paysContinent);
 		exporteur.sauvegarder(continent);
+	}
+
+	public void notifierUndo() {
+		historique.pop().annuler();
+		
 	}
 }
